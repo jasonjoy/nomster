@@ -10,6 +10,9 @@ gem 'simple_form', '>=3.0.1'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 
+# Devise for user auth
+gem 'devise', '>= 3.2.4'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
