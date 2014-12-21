@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+# Use figaro to help keep keys private
+gem 'figaro', ">= 1.0.0"
+
+# Use geocoder for Google Maps integration
+gem 'geocoder'
+
 # Use Kaminari for pagination
 gem 'kaminari'
 
