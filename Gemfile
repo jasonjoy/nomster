@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem "carrierwave"
+
 # Use figaro to help keep keys private
 gem 'figaro', ">= 1.0.0"
 
