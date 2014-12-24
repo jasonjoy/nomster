@@ -19,5 +19,5 @@
 /config/application.yml
 
 #Ignore uploaded photos
-#/public/uploads/photo
-#/public/uploads/tmp
+/public/uploads/photo
+/public/uploads/tmp
