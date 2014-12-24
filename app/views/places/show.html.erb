@@ -18,7 +18,7 @@
 			  var marker = new google.maps.Marker({
 			      position: myLatlng,
 			      map: map,
-			      title: 'Hello World!'
+			      title: "<%= @place.name %>"
 			  });
 			}
 
@@ -32,16 +32,27 @@
 	<br />
 
 	<% @place.photos.each do | photo | %>
+	<div class="col-xs-6 show-image">
+		<a href="<%= photo.picture %>" data-lightbox="<%= @place.name %>" data-title="<%= photo.caption %>">
+		<%= image_tag photo.picture, :class => 'img-thumbnail' %></a>
+		<div class="clear"></div>
+		<b><%= photo.caption %></b>
+		<br /><br />
+	</div>
+	<% end %>
+
+	<br />
+	<% @place.comments.each do |comment| %>
 		<div class="col-xs-12 col-sm-6">
 			<blockquote>
-				<% if photo.caption.present? %>
-					<%= image_tag photo.picture %>
-					<%= photo.caption %>
+				<% if comment.humanized_rating.present? %>
+					<b><%= comment.humanized_rating %></b> -
 				<% end %>
+				<%= comment.message %>
+				<small><%= comment.user.email %></small>
 			</blockquote>
 		</div>
 	<% end %>
-
 	<br />
 
 	<!-- Button trigger modal -->
@@ -49,10 +60,12 @@
 	  Add a comment
 	</button>
 
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
-	  Add a photo
-	</button>
+	<!-- Button trigger modal, only enabled for creator of this place -->
+	<% if current_user && current_user == @place.user %>
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
+		  Add a photo
+		</button>
+	<% end %>
 
 
 	<div class="pull-right">
@@ -111,16 +124,4 @@
 </div>
 
 <div class="clear"></div>
-
-<% @place.comments.each do |comment| %>
-	<div class="col-xs-12 col-sm-6">
-		<blockquote>
-			<% if comment.humanized_rating.present? %>
-				<b><%= comment.humanized_rating %></b> -
-			<% end %>
-			<%= comment.message %>
-			<small><%= comment.user.email %></small>
-		</blockquote>
-	</div>
-<% end %>
 
