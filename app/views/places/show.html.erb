@@ -45,9 +45,15 @@
 	<br />
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myCommentModal">
 	  Add a comment
 	</button>
+
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
+	  Add a photo
+	</button>
+
 
 	<div class="pull-right">
 		<% if current_user && current_user == @place.user %>
@@ -58,10 +64,8 @@
 	</div>
 </div>
 
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Comment Modal -->
+<div class="modal fade" id="myCommentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -85,13 +89,28 @@
 
 <div class="clear"></div>
 
-<% if current_user && current_user == @place.user %>
-	<%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
-	    <%= f.input :picture %>
-	    <%= f.input :caption %>
-	    <%= f.submit "Add a Photo", :class => 'btn btn-primary' %>
-	<% end %>
-<% end %>
+<!-- Photo Modal -->
+<div class="modal fade" id="myPhotoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Add a photo</h4>
+ 	  	<%= simple_form_for @photo, :url => place_photos_path(@place) do |f| %>
+     	<div class="modal-body">
+			<%= f.input :picture %>
+			<%= f.input :caption %>
+		</div>
+		<div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  <%= f.submit "Add a Photo", :class => 'btn btn-primary' %>
+		<% end %>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>
 
 <% @place.comments.each do |comment| %>
 	<div class="col-xs-12 col-sm-6">
