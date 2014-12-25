@@ -36,7 +36,7 @@
 		<a href="<%= photo.picture %>" data-lightbox="<%= @place.name %>" data-title="<%= photo.caption %>">
 		<%= image_tag photo.picture, :class => 'img-thumbnail' %></a>
 		<div class="clear"></div>
-		<b><%= photo.caption %></b>
+		<i><%= photo.caption %></i>
 		<br /><br />
 	</div>
 	<% end %>
@@ -55,18 +55,21 @@
 	<% end %>
 	<br />
 
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myCommentModal">
-	  Add a comment
-	</button>
-
-	<!-- Button trigger modal, only enabled for creator of this place -->
-	<% if current_user && current_user == @place.user %>
-		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
-		  Add a photo
+	
+	<div class="col-xs-12">
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myCommentModal">
+		  Add a comment
 		</button>
-	<% end %>
 
+		<!-- Button trigger modal, only enabled for creator of this place -->
+		<% if current_user && current_user == @place.user %>
+			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myPhotoModal">
+			  Add a photo
+			</button>
+		<% end %>
+	</div>
+	
 
 	<div class="pull-right">
 		<% if current_user && current_user == @place.user %>
