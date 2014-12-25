@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem "carrierwave"
 
+# Allows carrierwave to communicate with Amazon S3
+gem "fog", "~> 1.3.1"
+
 # Use figaro to help keep keys private
 gem 'figaro', ">= 1.0.0"
 
