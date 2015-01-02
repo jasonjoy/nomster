@@ -13,10 +13,13 @@
   <div class="clear"></div>
 </div>
 
-<div class="booyah-box">
-	<h1 class="text-center">My Comments</h1>
+<div class="paginate-box">
+	<br />
+	<h2 class="text-center">My Comments</h2>
+	<br />
 </div>
 
+<br />
 <% @user.comments.each do |comment| %>
 
 	<div class="col-xs-12 col-sm-6">
@@ -33,10 +36,14 @@
 <% end %>
 <div class="clear"></div>
 
-<div class="booyah-box">
+<br />
+<div class="paginate-box">
+	<br />
 	<h2 class="text-center">My Places</h2>
+	<br />
 </div>
 
+<br />
 <% @user.places.each do |place| %>
 	<div class="booyah-box col-xs-10 col-xs-offset-1">
 		
