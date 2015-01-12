@@ -8,4 +8,9 @@ class Place < ActiveRecord::Base
 	validates :name, :presence => true, :length => { :within => 3...100}
 	validates :address, :presence => true
 	validates :description, :presence => true
+
+	def descriptive_text_field
+		"#{name} - #{address} - #{description}"
+	end
+
 end

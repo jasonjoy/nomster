@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Fancybox allows images to be expanded when clicked
+gem 'fancybox-rails'
+
 gem "carrierwave"
 
 # Allows carrierwave to communicate with Amazon S3
@@ -55,6 +58,9 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+# Use FactoryGirl for testing
+gem "factory_girl_rails", "~> 4.0"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
